@@ -383,7 +383,10 @@ class OtpPinFieldState extends State<OtpPinField>
             Center(
               child: Text(
                 _getPinDisplay(i),
-                style: widget.otpPinFieldStyle?.textStyle,
+                style: pinsInputed[i].isEmpty && widget.showHintText
+                    ? widget.otpPinFieldStyle?.textStyle
+                        .copyWith(color: widget.hintTextColor)
+                    : widget.otpPinFieldStyle?.textStyle,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -404,6 +407,9 @@ class OtpPinFieldState extends State<OtpPinField>
       default:
         display = value;
         break;
+    }
+    if (value.isEmpty && widget.showHintText) {
+      return widget.hintText;
     }
     return value.isNotEmpty ? display : value;
   }
