@@ -378,9 +378,6 @@ class OtpPinFieldState extends State<OtpPinField>
         child: Stack(
           children: [
             Center(
-              child: showCursorWidget(),
-            ),
-            Center(
               child: Text(
                 _getPinDisplay(i),
                 style: pinsInputed[i].isEmpty && widget.showHintText
@@ -389,6 +386,9 @@ class OtpPinFieldState extends State<OtpPinField>
                     : widget.otpPinFieldStyle?.textStyle,
                 textAlign: TextAlign.center,
               ),
+            ),
+            Center(
+              child: showCursorWidget(),
             ),
           ],
         ));
